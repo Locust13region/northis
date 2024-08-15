@@ -53,6 +53,7 @@ export default function Description() {
 					<Typography
 						mb={2}
 						fontSize={32}
+						sx={{ overflowWrap: "break-word" }}
 					>
 						{repoInfo.name}
 					</Typography>
@@ -62,10 +63,14 @@ export default function Description() {
 						alignItems={"center"}
 						justifyContent={"space-between"}
 					>
-						<Chip
-							label={repoInfo.language}
-							color={"primary"}
-						/>
+						<div>
+							{repoInfo.language && (
+								<Chip
+									label={repoInfo.language}
+									color={"primary"}
+								/>
+							)}
+						</div>
 						<Stack
 							direction={"row"}
 							alignItems={"flex-start"}
@@ -82,7 +87,7 @@ export default function Description() {
 								component={"legend"}
 								fontSize={14}
 							>
-								{repoInfo.score}
+								{repoInfo.stargazers_count}
 							</Typography>
 						</Stack>
 					</Stack>
@@ -102,7 +107,7 @@ export default function Description() {
 							/>
 						))}
 					</Stack>
-					<Typography fontSize={14}>{repoInfo.license}</Typography>
+					<Typography fontSize={14}>{repoInfo.license?.name ?? ""}</Typography>
 				</Box>
 			)}
 		</Box>

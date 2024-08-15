@@ -73,7 +73,7 @@ export default function Repositories() {
 			</Typography>
 			<Box
 				width={"100%"}
-				height={"770px"}
+				height={"100%"}
 			>
 				<StyledDataGrid
 					disableColumnMenu

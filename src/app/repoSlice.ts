@@ -55,7 +55,7 @@ const initialState: RepoState = {
 		name: "",
 		language: "",
 		languages_url: "",
-		score: 0,
+		stargazers_count: 0,
 		license: null,
 	},
 	repoLanguages: [],

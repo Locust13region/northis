@@ -18,8 +18,8 @@ export interface RepoDescription {
 	name: string;
 	language: string;
 	languages_url: string;
-	score: number;
-	license: string | null;
+	stargazers_count: number;
+	license: License | null;
 }
 export interface RepoItems extends RepoDescription {
 	id: number;
@@ -30,4 +30,12 @@ export interface RepoItems extends RepoDescription {
 export interface PaginationModel {
 	pageSize: number;
 	page: number;
+}
+
+export interface License {
+	key: string;
+	name: string;
+	spdx_id: string;
+	url: string;
+	node_id: string;
 }

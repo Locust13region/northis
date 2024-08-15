@@ -28,7 +28,7 @@ export const dataGridColumns: GridColDef[] = [
 		headerName: "Число форков",
 	},
 	{
-		field: "score",
+		field: "stargazers_count",
 		type: "number",
 		flex: 1,
 		editable: false,

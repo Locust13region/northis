@@ -11,6 +11,18 @@ interface repositoriesRequestProps {
 	sort: GridSortDirection;
 }
 
+//преобразование поля к воспринимаемому поисковым запросом виду
+function fieldNameConverter(fieldName: string): string {
+	switch (fieldName) {
+		case "updated_at":
+			return "updated";
+		case "stargazers_count":
+			return "stars";
+		default:
+			return fieldName;
+	}
+}
+
 export const repositoriesRequest = async ({
 	searchRequest,
 	pageSize,
@@ -18,10 +30,9 @@ export const repositoriesRequest = async ({
 	field,
 	sort,
 }: repositoriesRequestProps): Promise<Repositories> => {
-	const sortField = field === "updated_at" ? "updated" : field; //преобразование поля к воспринимаемому поисковым запросом виду
-	const repositoriesUrl = `${baseUrl}?q=${searchRequest}+in:name&sort=${sortField}&order=${sort}&per_page=${pageSize}&page=${
-		page + 1
-	}`;
+	const repositoriesUrl = `${baseUrl}?q=${searchRequest}+in:name&sort=${fieldNameConverter(
+		field
+	)}&order=${sort}&per_page=${pageSize}&page=${page + 1}`;
 	const response = await fetch(repositoriesUrl, { headers: requestHeaders });
 	if (!response.ok) {
 		throw new Error("wrong response");

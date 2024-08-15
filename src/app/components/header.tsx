@@ -11,9 +11,20 @@ export default function Header() {
 	const searchString = useAppSelector(searchRequest);
 	const handleInput = (event: React.ChangeEvent<HTMLInputElement>) =>
 		dispatch(setSearchRequest(event.target.value));
-	const handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
+	const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+		if (event.key === "Enter") {
+			handleSubmit(event);
+		}
+	};
+	const handleSubmit = (
+		event:
+			| React.MouseEvent<HTMLButtonElement>
+			| React.KeyboardEvent<HTMLInputElement>
+	) => {
 		event.preventDefault();
-		dispatch(fetchRepositories());
+		if (searchString) {
+			dispatch(fetchRepositories());
+		}
 	};
 
 	return (
@@ -30,6 +41,7 @@ export default function Header() {
 					inputProps={{ "aria-label": "search" }}
 					onChange={handleInput}
 					value={searchString}
+					onKeyDown={handleKeyDown}
 				/>
 				<Button
 					size={"large"}
