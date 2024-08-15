@@ -60,7 +60,7 @@ const initialState: RepoState = {
 	},
 	repoLanguages: [],
 	loading: false,
-	searchRequest: "cocktailsdb",
+	searchRequest: "",
 	sortModel: [
 		{
 			field: "forks",
@@ -87,6 +87,9 @@ export const RepoSlice = createSlice({
 		},
 		setPaginationModel: (state, action: PayloadAction<PaginationModel>) => {
 			state.paginationModel = action.payload;
+		},
+		setFirstPage: (state) => {
+			state.paginationModel.page = 0;
 		},
 		setSortModel: (state, action: PayloadAction<GridSortModel>) => {
 			state.sortModel = action.payload;
@@ -124,6 +127,7 @@ export const RepoSlice = createSlice({
 export const {
 	setSearchRequest,
 	setPaginationModel,
+	setFirstPage,
 	setSortModel,
 	setRowSelectionModel,
 } = RepoSlice.actions;

@@ -4,7 +4,11 @@ import Button from "@mui/material/Button";
 import { StyledSearchInput } from "../styled-components";
 import { searchRequest } from "../selectors";
 import { useAppDispatch, useAppSelector } from "../hooks";
-import { fetchRepositories, setSearchRequest } from "../repoSlice";
+import {
+	fetchRepositories,
+	setFirstPage,
+	setSearchRequest,
+} from "../repoSlice";
 
 export default function Header() {
 	const dispatch = useAppDispatch();
@@ -24,6 +28,7 @@ export default function Header() {
 		event.preventDefault();
 		if (searchString) {
 			dispatch(fetchRepositories());
+			dispatch(setFirstPage()); //сброс нумерации страниц на первую страницу при новом поиске
 		}
 	};
 
