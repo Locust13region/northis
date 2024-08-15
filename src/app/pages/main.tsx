@@ -7,6 +7,7 @@ export default function Main() {
 		<Grid
 			container
 			height={"100%"}
+			// overflow={"hidden"}
 		>
 			<Grid
 				item

@@ -72,26 +72,31 @@ export default function Repositories() {
 				Результаты поиска
 			</Typography>
 			<Box
-				width={"100%"}
-				height={"100%"}
+				flex={1}
+				position={"relative"}
 			>
-				<StyledDataGrid
-					disableColumnMenu
-					disableColumnResize
-					columns={dataGridColumns}
-					rows={rows}
-					rowCount={rowCount}
-					loading={isLoading}
-					paginationMode="server"
-					sortingMode="server"
-					paginationModel={paginationMdl}
-					onPaginationModelChange={handlePaginationModel}
-					pageSizeOptions={[5, 10, 50]}
-					onSortModelChange={handleSortModel}
-					rowSelectionModel={rowSelectionMdl}
-					onRowSelectionModelChange={handleRowSelectionModel}
-					keepNonExistentRowsSelected
-				></StyledDataGrid>
+				<Box
+					position={"absolute"} //https://github.com/mui/mui-x/issues/8895
+					sx={{ inset: 0 }}
+				>
+					<StyledDataGrid
+						disableColumnMenu
+						disableColumnResize
+						columns={dataGridColumns}
+						rows={rows}
+						rowCount={rowCount}
+						loading={isLoading}
+						paginationMode="server"
+						sortingMode="server"
+						paginationModel={paginationMdl}
+						onPaginationModelChange={handlePaginationModel}
+						pageSizeOptions={[5, 10, 50]}
+						onSortModelChange={handleSortModel}
+						rowSelectionModel={rowSelectionMdl}
+						onRowSelectionModelChange={handleRowSelectionModel}
+						keepNonExistentRowsSelected
+					></StyledDataGrid>
+				</Box>
 			</Box>
 		</Box>
 	);
