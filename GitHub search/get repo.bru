@@ -1,0 +1,17 @@
+meta {
+  name: get repo
+  type: http
+  seq: 2
+}
+
+get {
+  url: https://api.github.com/search/repositories?q=node+in:name+language:javascript&sort=stars&order=desc
+  body: none
+  auth: none
+}
+
+query {
+  q: node+in:name+language:javascript
+  sort: stars
+  order: desc
+}
